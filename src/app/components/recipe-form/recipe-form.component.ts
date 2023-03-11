@@ -13,12 +13,12 @@ export class RecipeFormComponent implements OnInit {
 
   addRecipe(newName: HTMLInputElement, newDescription: any) {
     this.recipeService.addRecipe({
-      id: this.recipeService.recipes.length + 1,
       name: newName.value,
       description: newDescription.value,
     });
     newName.value = '';
     newDescription.value = '';
+    newName.focus();
     console.log(this.recipeService.getRecipes());
     return false;
   }

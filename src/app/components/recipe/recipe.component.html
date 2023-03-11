@@ -6,12 +6,11 @@
   <div class="card-body">
     {{recipe.description}}
   </div>
-  <div class="card-footer d-flex justify-content-between align-right">
-    <div class="m-1"> ID: {{recipe.id}}</div>
-    <div>
+  <div class="card-footer d-flex justify-content-between align-center">
 
+    <div>
       <button class="btn btn-warning mx-2"> Edit </button>
-      <button class="btn btn-danger mx-1"> Delete </button>
+      <button class="btn btn-danger mx-1" (click)="deleteRecipe(recipe)"> Delete </button>
     </div>
   </div>
 </div>
