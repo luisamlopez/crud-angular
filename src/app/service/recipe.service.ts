@@ -57,4 +57,14 @@ export class RecipeService {
       }
     }
   }
+
+  updateRecipe(recipe: Recipe) {
+    for (let i = 0; i < this.recipes.length; i++) {
+      if (recipe == this.recipes[i]) {
+        this.recipes.splice(i, 1);
+        this.recipes.unshift(recipe);
+        localStorage.setItem('recipes', JSON.stringify(this.recipes));
+      }
+    }
+  }
 }

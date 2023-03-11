@@ -19,4 +19,7 @@ export class RecipeComponent implements OnInit {
       this.recipeService.deleteRecipe(recipe);
     }
   }
+  updateRecipe(recipe: Recipe) {
+    this.recipeService.updateRecipe(recipe);
+  }
 }
