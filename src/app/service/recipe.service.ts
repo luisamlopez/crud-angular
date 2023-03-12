@@ -6,22 +6,7 @@ import { Recipe } from '../models/recipes';
 })
 export class RecipeService {
   recipes: Recipe[] = [];
-  constructor() {
-    // this.recipes = [
-    //   {
-    //     name: 'Pizza',
-    //     description: 'A delicious pizza',
-    //   },
-    //   {
-    //     name: 'Hamburger',
-    //     description: 'A delicious hamburger',
-    //   },
-    //   {
-    //     name: 'Hot Dog',
-    //     description: 'A delicious hot dog',
-    //   },
-    // ];
-  }
+  constructor() {}
 
   getRecipes() {
     if (localStorage.getItem('recipes') === null) {
