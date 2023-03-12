@@ -15,11 +15,11 @@ export class RecipeFormComponent implements OnInit {
     this.recipeService.addRecipe({
       name: newName.value,
       description: newDescription.value,
+      update: false,
     });
     newName.value = '';
     newDescription.value = '';
     newName.focus();
     console.log(this.recipeService.getRecipes());
-    return false;
   }
 }

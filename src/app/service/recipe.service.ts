@@ -58,12 +58,22 @@ export class RecipeService {
     }
   }
 
-  updateRecipe(recipe: Recipe) {
+  updateRecipe(newName: any, newDescription: any, recipe: Recipe) {
+    console.log('antes del cambio');
+    console.log(this.recipes);
     for (let i = 0; i < this.recipes.length; i++) {
       if (recipe == this.recipes[i]) {
         this.recipes.splice(i, 1);
-        this.recipes.unshift(recipe);
+        const newRecipe: Recipe = {
+          name: newName.value,
+          description: newDescription.value,
+          update: false,
+        };
+        this.recipes.push(newRecipe);
+        console.log('despues del cambio');
+        console.log(this.recipes);
         localStorage.setItem('recipes', JSON.stringify(this.recipes));
+        recipe.update = false;
       }
     }
   }

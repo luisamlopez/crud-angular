@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Recipe } from 'src/app/models/recipes';
 import { RecipeService } from 'src/app/service/recipe.service';
 
@@ -8,7 +8,10 @@ import { RecipeService } from 'src/app/service/recipe.service';
   styleUrls: ['./recipe.component.css'],
 })
 export class RecipeComponent implements OnInit {
-  @Input() recipe: Recipe = { name: '', description: '' };
+  @Input() recipe: Recipe = { name: '', description: '', update: false };
+  isEditEnable: boolean = false;
+  @Input() newName: any;
+  description: any;
 
   constructor(public recipeService: RecipeService) {}
 
@@ -19,7 +22,14 @@ export class RecipeComponent implements OnInit {
       this.recipeService.deleteRecipe(recipe);
     }
   }
+
   updateRecipe(recipe: Recipe) {
-    this.recipeService.updateRecipe(recipe);
+    const newName = document.getElementById('newName') as HTMLInputElement;
+    const newDescription = document.getElementById(
+      'newDescription'
+    ) as HTMLTextAreaElement;
+    this.isEditEnable = !this.isEditEnable;
+    recipe.name = newName.value!;
+    this.recipeService.updateRecipe(newName, newDescription, recipe);
   }
 }

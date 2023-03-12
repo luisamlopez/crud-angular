@@ -1,15 +1,25 @@
 <div class="card mb-2">
   <div class="card-header ">
     {{recipe.name}}
-
+    <!-- <input type="text" class="form-control" placeholder="Recipe name" name="name" #newName> -->
+    <div class="example-full-width" *ngIf="isEditEnable">
+      <input type="text" class="form-control" placeholder="Enter new name" id="newName" name="name" #newName
+        value={{recipe.name}}>
+    </div>
   </div>
   <div class="card-body">
     {{recipe.description}}
+    <div class="example-full-width" *ngIf="isEditEnable">
+      <input type="text" class="form-control" placeholder="Enter new description" id="newDescription" name="description"
+        #newDescription value={{recipe.description}}>
+    </div>
   </div>
   <div class="card-footer d-flex justify-content-between align-center">
 
     <div>
-      <button class="btn btn-warning mx-2" (click)="updateRecipe(recipe)"> Edit </button>
+      <button *ngIf="isEditEnable" class="btn btn-success mx-2" (click)="updateRecipe(recipe)">Submit</button>
+      <button class="btn btn-warning mx-2" *ngIf="!isEditEnable" (click)="updateRecipe(recipe)"> Edit
+      </button>
       <button class="btn btn-danger mx-1" (click)="deleteRecipe(recipe)"> Delete </button>
     </div>
   </div>
